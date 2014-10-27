@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- Estilo em CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Fonts vindo do google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <title>Obrigado!</title>
+
+    <script type="text/javascript">
+        function a(){
+            value = $("#campotema").val();
+            $("#listaAprender").append('<li class="list-group-item">'+value+'<button class="styleico glyphicon glyphicon glyphicon-circle-arrow-right" onclick="destroy();"></button></li>');
+
+        }
+
+        $(document).ready(function(){
+            $("#listaAprender").delegate("li", "click", function() {
+                $("#listaAprendidos").append('<li class="list-group-item">'+$(this).text()+'<button class="styleico glyphicon glyphicon-remove" onclick="destroy();"></button></li>');
+                this.remove();
+            });
+
+
+
+            $("#listaAprendidos").delegate("li", "click", function() {
+                $(this).remove();
+            });
+
+
+
+        });
+
+        function destroy(){
+            $(".glyphicon-remove").click(function(){
+                $(this).closest('li').remove();
+            });
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+<div class="centerpage3" style="margin: 15px; font-size: 48px"> Obrigado!</div>
+<div id="caixa">
+
+    <form id="formulario" role="form" >
+        <div class="form-group">
+            <label> Novo item:</label>
+            <input style="width: 25%; text-align: center; margin-left: 38%" type="text" class="form-control" id="campotema">
+        </div>
+    </form>
+    <button type="submit" class="btn btn-default" onclick="a();">Submit</button>
+</div>
+
+<div id="content">
+
+    <section id="secAprender" class="divsec">
+        <header>Temas a Aprender:</header>
+        <ul id="listaAprender" class="list-group">
+
+        </ul>
+    </section>
+
+
+    <section id="secAprendidos" class="divsec" style="margin: 0px 50px">
+        <header>Temas Aprendidos</header>
+        <ul id="listaAprendidos" class="list-group">
+            <li class="list-group-item">Programação 1<button class="styleico glyphicon glyphicon-remove"></button></li>
+            <li class="list-group-item">Programação 2<button class="styleico glyphicon glyphicon-remove"></button></li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>
